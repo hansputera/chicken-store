@@ -37,5 +37,21 @@ bot.on('ready', () => {
 });
 
 bot.on('message', async message => {
-  const msg = message
+  const msg = message.content.toLowerCase();
+  const args = message.content.slice('c?'.length).trim().split(' ');
+  const cmd = args.shift().toLowerCase();
+
+  
+ if (!msg.startsWith('c?')) return;
+
+ try {
+ let cmds = require(`./commands/${cmd}.js`);
+ cmds(bot, message, args);
+ } catch (e) {
+  console.log(e.message);
+ } finally {
+  console.log(`${message.author.tag} AYAM ${cmd}`);
+ }
 });
+
+bot.login('NzIzODU5MDQxOTYwNDYwMzIw.Xu7rIQ.jyhJH_9zEaShJvDmcfXg05R8OXk');
