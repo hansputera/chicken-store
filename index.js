@@ -45,7 +45,7 @@ bot.on('message', async message => {
   const cmd = args.shift().toLowerCase();
 
 
- message.guildOnly = message.channel.type !== 'dm';
+ message.guildOnly = message.channel.type === 'text';
 
  if (message.author.bot) return:
   
