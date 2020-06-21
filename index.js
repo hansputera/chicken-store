@@ -30,6 +30,9 @@ mongoose.connect(url('ticket'), { useNewUrlParser: true, useUnifiedTopology: tru
 const ticket = mongoose.model('ticket', dbTicket);
 
 
+app.get('/', (req,res) => res.sendStatus(200));
+
+app.listen(4000 || process.env.PORT);
 
 bot.on('ready', () => {
  console.log('Bot Siap!');
