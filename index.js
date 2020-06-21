@@ -44,6 +44,10 @@ bot.on('message', async message => {
   const args = message.content.slice('c?'.length).trim().split(' ');
   const cmd = args.shift().toLowerCase();
 
+
+ message.guildOnly = message.channel.type !== 'dm';
+
+ if (message.author.bot) return:
   
  if (!msg.startsWith('c?')) return;
 
