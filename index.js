@@ -7,10 +7,6 @@ const Discord = require('discord.js'),
 
 const mongoose = require('mongoose');
 
-/* Retrieved Data */
-
-const TicketModel = mongoose.model('ticket');
-bot.ticket = new TicketModel();
 
 const url = database => 'mongodb+srv://anaksapi:kucing@cluster0-ecsqj.mongodb.net/' + database + '?retryWrites=true&w=majority';
 
@@ -27,7 +23,10 @@ mongoose.connect(url('ticket'), { useNewUrlParser: true, useUnifiedTopology: tru
  console.log('Success connect to ticket db!');
 });
 
-const ticket = mongoose.model('ticket', dbTicket);
+/* Retrieved Data */
+
+const TicketModel = mongoose.model('ticket', dbTicket);
+bot.ticket = new TicketModel();
 
 
 app.get('/', (req,res) => res.sendStatus(200));
