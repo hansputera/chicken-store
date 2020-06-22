@@ -13,7 +13,7 @@
   "discord.js": "*",
   "mongoose": "*",
   "canvas": "*",
-  "canvas-constructor": "*",
+  "canvacord": "*",
   "node-superfetch": "*",
   "express": "*"
  }
