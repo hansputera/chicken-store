@@ -1,6 +1,8 @@
 const express = require('express'),
       app = express();
 
+const PORT = process.env.PORT || 3000;
+
 const { Canvas } = require('canvas-constructor');
 
 const Discord = require('discord.js'),
@@ -35,7 +37,9 @@ bot.ticket = new TicketModel();
 
 app.get('/', (req,res) => res.sendStatus(200));
 
-app.listen(4000 || process.env.PORT);
+let listener = app.listen(PORT, function() {
+ console.log('Web is ready!');
+})
 
 bot.on('ready', () => {
  console.log('Bot Siap!');
