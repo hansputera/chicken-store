@@ -50,7 +50,7 @@ bot.on('message', async message => {
 
  message.guildOnly = message.channel.type === 'text';
 
- if (message.author.bot) return:
+ if (message.author.bot) return;
   
  if (!msg.startsWith('>')) return;
 
