@@ -11,6 +11,9 @@
  },
  "dependencies": {
   "discord.js": "*",
-  "mongoose": "*"
+  "mongoose": "*",
+  "canvas": "*",
+  "canvas-constructor": "*",
+  "node-superfetch": "*"
  }
 }
