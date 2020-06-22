@@ -9,6 +9,9 @@ const Discord = require('discord.js'),
       { Client } = Discord,
       bot = new Client();
 
+const canvacord = require('canvacord');
+const canva = new canvacord();
+
 const mongoose = require('mongoose');
 const req = require('node-superfetch');
 
@@ -43,7 +46,13 @@ let listener = app.listen(PORT, function() {
 
 bot.on('ready', () => {
  console.log('Bot Siap!');
- bot.user.setActivity('Chicken Store', { type: 'STREAMING', url: 'https://www.twitch.tv/hanspro64' });
+   function status() {
+      let stat = ['ChickenNodes', 'Data Center ChickenNodes'];
+       let rand = Math.floor(Math.random() * stat.length);
+         bot.user.setActivity(stat[rand], { type: 'STREAMING'});
+      }
+      setInterval(status, 5000);
+ //bot.user.setActivity('Chicken Store', { type: 'STREAMING', url: 'https://www.twitch.tv/hanspro64' });
 });
 
 bot.on('message', async message => {
@@ -70,51 +79,14 @@ bot.on('message', async message => {
 
 
 bot.on('guildMemberAdd', async member => {
-      var imageUrlRegex = /\?size=2048$/g;
-      const { body: avatar } = await req.get(member.user.displayAvatarURL({ dynamic: false, format: 'png', size: 512 }));
-      const { body: background } = await req.get(`https://images.unsplash.com/photo-1488188840666-e2308741a62f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60`);
-      async function createCanvas() {
-        return new Canvas(1024, 450)
-          .addImage(background, 0, -100)
-          .setColor("#ffffff")
-          .addCircle(512, 155, 120)
-          .addCircularImage(avatar, 512, 155, 115)
-          .setTextAlign("center")
-          .setColor("#ffffff")
-          .addText("WELCOME", 512, 355)
-          .setTextAlign("center")
-          .setColor("#ffffff")
-          .addText(`${member.user.tag}`, 512, 395)
-          .setTextAlign("center")
-          .setColor("#ffffff")
-          .addText(`Welcome to ${member.guild.name}`, 512, 430)
-          .toBufferAsync();
-      };
-      member.guild.channels.cache.get('723802127922626571').send(`Welcome ${member.user.username} di store kami.`, { files: [{ attachment: await createCanvas(), name: 'welcome.png' }]});
+      let image = await canva.welcome({ username: member.user.username, discrim: member.user.discriminator, avatarURL: member.user.displayAvatarURL({ format: 'png', size:512, dynamic: false })});
+      member.guild.channels.cache.get('723802127922626571').send(`Welcome ${member.user.username} di store kami.`, { files: [{ attachment: image, name: 'welcome.png' }]});
 });
 
 bot.on('guildMemberRemove', async member => {
-      var imageUrlRegex = /\?size=2048$/g;
-      const { body: avatar } = await req.get(member.user.displayAvatarURL({ dynamic: false, format: 'png', size: 512 }));
-      const { body: background } = await req.get(`https://images.unsplash.com/photo-1488188840666-e2308741a62f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60`);
-      async function createCanvas() {
-        return new Canvas(1024, 450)
-          .addImage(background, 0, -100)
-          .setColor("#ffffff")
-          .addCircle(512, 155, 120)
-          .addCircularImage(avatar, 512, 155, 115)
-          .setTextAlign("center")
-          .setColor("#ffffff")
-          .addText("GOODBYE", 512, 355)
-          .setTextAlign("center")
-          .setColor("#ffffff")
-          .addText(`${member.user.tag}`, 512, 395)
-          .setTextAlign("center")
-          .setColor("#ffffff")
-          .addText(`GOODBYE ${member.guild.name}, STAY SAFE!`, 512, 430)
-          .toBufferAsync();
-      };
-      member.guild.channels.cache.get('723802127922626571').send(`Goodbye ${member.user.username} semangat terus ya :).`, { files: [{ attachment: await createCanvas(), name: 'welcome.png' }]});
+      let image = await canva.leave({ username: member.user.username, discrim: member.user.discriminator, avatarURL: member.user.displayAvatarURL({ format: 'png', size:512, dynamic: false })});
+  
+      member.guild.channels.cache.get('723802127922626571').send(`Goodbye ${member.user.username} semangat terus ya :).`, { files: [{ attachment: image, name: 'welcome.png' }]});
 });
 
 bot.login('NzIzODU5MDQxOTYwNDYwMzIw.Xu7rIQ.jyhJH_9zEaShJvDmcfXg05R8OXk');
