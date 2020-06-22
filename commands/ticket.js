@@ -24,8 +24,14 @@ module.exports = async (bot, message, args) => {
      bot.ticket.userID = message.author.id;
      bot.ticket.channelID = ch.id;
      
+     bot.ticket.save().then(err => {
+      if (err) 
+      {
+       console.log(err);
+      }
      ch.send({ embed: { color: 5921535, title: 'Ticket Support', description: 'Silahkan ketik keluhan atau apa saja disini yang anda butuhkan!', footer: { text: '© Copyright 2020 ChickenJS' }});
      message.reply('Your Ticket Support Channel: <#${ch.id}>`);
+     })
     })
    }
  })
