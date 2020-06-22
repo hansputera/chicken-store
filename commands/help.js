@@ -7,7 +7,7 @@ module.exports = async (bot, message, args) => {
  .setTitle('Help command for Chicken Store Bot!')
  .setDescription(`Hello **${message.author.tag}** welcome to chicken store!`)
  .setThumbnail(message.guild.iconURL())
- .addField('📪 Customer', `\`order\`,\`ticket\``)
+ .addField('📪 Customer', `\`order\`,\`ticket\`, \`close\``)
  .addField('📊 General', `\`say\`,\`help\`,\`mcserver\``)
  .setTimestamp();
  
