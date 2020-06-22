@@ -2,7 +2,7 @@ module.exports = async (bot, message, args) => {
  await bot.ticket.findOne({ userID: message.author.id }, async (err, res) => {
    if (err) {
     message.reply('Error telah terjadi silahkan hubungi staff untuk mengeceknya!');
-    console.log(err);
+    console.log(err.message);
    }
    if (res) {
     return message.channel.send('Ticket kamu sudah ada sebelumnya mohon gunakan yang lama dulu!');
@@ -26,7 +26,7 @@ module.exports = async (bot, message, args) => {
      
      bot.ticket.save().then(err => {
       if (err) {
-       console.log(err);
+       console.log(err.message);
       }
      ch.send({ embed: { color: 5921535, title: 'Ticket Support', description: 'Silahkan ketik keluhan atau apa saja disini yang anda butuhkan!', footer: { text: '© Copyright 2020 ChickenJS' }}});
      message.reply('Your Ticket Support Channel: <#${ch.id}>`);
