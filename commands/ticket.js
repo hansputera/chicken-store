@@ -21,7 +21,7 @@ message.guild.channels.create(`ticket-${message.author.id}`, {
  bot.ticket.userID = message.author.id;
  bot.ticket.channelID = ch.id;
 
- bot.ticket.save().then(error => {
+ await bot.ticket.save().then(error => {
   message.reply(`➡ Ticket channel anda : <#${ch.id}`);
   ch.send({embed:{ color: 0xfca, title: 'Ticket Support', description: `Silahkan ketik keluhan atau apa saja tentang ~~pelayanan~~ kami disini!`, footer: { text: '© Chicken NodeJS' }}});
  }) // end save
