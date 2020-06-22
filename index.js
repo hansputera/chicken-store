@@ -32,7 +32,7 @@ mongoose.connect(url('ticket'), { useNewUrlParser: true, useUnifiedTopology: tru
 /* Retrieved Data */
 
 const TicketModel = mongoose.model('ticket', ticketSchema);
-bot.ticket = new TicketModel();
+bot.ticket = TicketModel;
 
 
 app.get('/', (req,res) => res.sendStatus(200));
