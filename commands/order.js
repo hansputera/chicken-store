@@ -22,7 +22,7 @@ module.exports = async (bot, message, args) => {
   }).then(channel => {
    const e = new MessageEmbed()
    .setColor('RANDOM')
-   .setDescription(`Halo <@!${message.author.id}> silahkan ketik orderan kamu atau hubungi <@!723541917400563771> atau staff yang aktif lainnya.`)
+   .setDescription(`Halo <@!${message.author.id}> silahkan ketik orderan kamu atau hubungi <@!691656267508219935>, <@!456323519765020683> atau staff yang aktif lainnya.`)
    .setTimestamp()
    .setThumbnail(message.author.displayAvatarURL());
    channel.send(e);
