@@ -6,7 +6,7 @@ module.exports = async (bot, message, args) => {
    }
    if (res) {
     return message.channel.send('Ticket kamu sudah ada sebelumnya mohon gunakan yang lama dulu!');
-   } else {
+   }
     
     message.guild.channels.create(`ticket-${message.author.id}`, {
     type: 'text',
@@ -32,6 +32,5 @@ module.exports = async (bot, message, args) => {
      message.reply('Your Ticket Support Channel: <#${ch.id}>`);
      })
     })
-   }
  })
 }
