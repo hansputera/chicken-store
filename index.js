@@ -16,6 +16,10 @@ bot.req = req;
 
 const url = database => 'mongodb+srv://anaksapi:kucing@cluster0-ecsqj.mongodb.net/' + database + '?retryWrites=true&w=majority';
 
+const ticketSchema = new mongoose.Schema({
+ userID: String,
+ channelID: String
+});
 
 mongoose.connect(url('ticket'), { useNewUrlParser: true, useUnifiedTopology: true }, (err) => {
  if (err) {
@@ -27,7 +31,7 @@ mongoose.connect(url('ticket'), { useNewUrlParser: true, useUnifiedTopology: tru
 
 /* Retrieved Data */
 
-const TicketModel = mongoose.model('ticket');
+const TicketModel = mongoose.model('ticket', ticketSchema);
 bot.ticket = new TicketModel();
 
 
