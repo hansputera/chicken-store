@@ -3,8 +3,6 @@ const express = require('express'),
 
 const PORT = process.env.PORT || 3000;
 
-const { Canvas } = require('canvas-constructor');
-
 const Discord = require('discord.js'),
       { Client } = Discord,
       bot = new Client();
