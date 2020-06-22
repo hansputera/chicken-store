@@ -67,8 +67,8 @@ bot.on('message', async message => {
 
 bot.on('guildMemberAdd', async member => {
       var imageUrlRegex = /\?size=2048$/g;
-      var { body: avatar } = await req.get(member.user.displayAvatarURL({ dynamic: true, format: 'png' size: 512 }));
-      var { body: background } = await req.get(`https://images.unsplash.com/photo-1488188840666-e2308741a62f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60`);
+      const { body: avatar } = await req.get(member.user.displayAvatarURL({ dynamic: true, format: 'png' size: 512 }));
+      const { body: background } = await req.get(`https://images.unsplash.com/photo-1488188840666-e2308741a62f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60`);
       async function createCanvas() {
         return new Canvas(1024, 450)
           .addImage(background, 0, -100)
@@ -91,8 +91,8 @@ bot.on('guildMemberAdd', async member => {
 
 bot.on('guildMemberRemove', async member => {
       var imageUrlRegex = /\?size=2048$/g;
-      var { body: avatar } = await req.get(member.user.displayAvatarURL({ dynamic: true, format: 'png' size: 512 }));
-      var { body: background } = await req.get(`https://images.unsplash.com/photo-1488188840666-e2308741a62f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60`);
+      const { body: avatar } = await req.get(member.user.displayAvatarURL({ dynamic: true, format: 'png' size: 512 }));
+      const { body: background } = await req.get(`https://images.unsplash.com/photo-1488188840666-e2308741a62f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60`);
       async function createCanvas() {
         return new Canvas(1024, 450)
           .addImage(background, 0, -100)
