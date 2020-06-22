@@ -23,7 +23,7 @@ const data = await bot.ticket({ userID: message.author.id, channelID: ch.id });
 
  data.save().catch(error => console.log(error));
 
-  message.reply(`➡ Ticket channel anda : <#${ch.id}`);
+  message.reply(`➡ Ticket channel anda : <#${ch.id}>`);
   ch.send({embed:{ color: 0xfca, title: 'Ticket Support', description: `Silahkan ketik keluhan atau apa saja tentang ~~pelayanan~~ kami disini!`, footer: { text: '© Chicken NodeJS' }}});
 }) // end ch
 }); // findOne end
