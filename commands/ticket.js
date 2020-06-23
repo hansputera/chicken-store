@@ -10,7 +10,7 @@ if (err) {
 } // error end
 
 if (res) {
- message.reply('Ticket kamu sudah tersedia sebelumnya, gunakan saja channel tersebut!');
+ return message.reply('Ticket kamu sudah tersedia sebelumnya, gunakan saja channel tersebut!');
 } // res end
 
 message.guild.channels.create(`ticket-${message.author.id}`, {
